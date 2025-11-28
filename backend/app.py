@@ -1,11 +1,15 @@
-from flask import Flask, send_from_directory, jsonify
+from flask import Flask, send_from_directory, jsonify, Response
 from frontend import build_frontend
 import webbrowser
 import os
+import rest_service
+from api import api
 
 build_frontend()
 
 app = Flask(__name__, static_folder="../frontend/dist")
+
+app.register_blueprint(api, url_prefix="/api")
 
 # Serve React's index.html for all routes except /api/*
 @app.route("/", defaults={"path": ""})
@@ -16,11 +20,6 @@ def serve_react(path):
     else:
         # React's index.html for SPA routing
         return send_from_directory(app.static_folder, "index.html")
-
-# Example API route
-@app.route("/api/hello")
-def api_hello():
-    return jsonify({"message": "Hello from Flask API!"})
 
 if __name__ == "__main__":
     webbrowser.open("http://localhost:8080")

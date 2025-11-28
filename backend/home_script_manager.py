@@ -70,6 +70,6 @@ def run_function(script_path, function_name, *args, **kwargs):
     return func(*args, **kwargs)
 
 
-example_script_path = list_paths_for_scripts()[0]
-example_function = list_top_level_functions(example_script_path)[0]
-print(run_function(example_script_path, example_function, 1, 2))
+#example_script_path = list_paths_for_scripts()[0]
+#example_function = list_top_level_functions(example_script_path)[0]
+#print(run_function(example_script_path, example_function, 1, 2))
