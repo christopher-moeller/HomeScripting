@@ -4,7 +4,7 @@ import os
 
 build_frontend()
 
-app = Flask(__name__, static_folder="../frontend/build")
+app = Flask(__name__, static_folder="../frontend/dist")
 
 # Serve React's index.html for all routes except /api/*
 @app.route("/", defaults={"path": ""})
