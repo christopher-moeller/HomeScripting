@@ -1,5 +1,6 @@
 from flask import Flask, send_from_directory, jsonify
 from frontend import build_frontend
+import webbrowser
 import os
 
 build_frontend()
@@ -22,4 +23,5 @@ def api_hello():
     return jsonify({"message": "Hello from Flask API!"})
 
 if __name__ == "__main__":
+    webbrowser.open("http://localhost:8080")
     app.run(host="localhost", port=8080)
